@@ -1,40 +1,121 @@
-import React from 'react'
-import { useSelector, useDispatch } from "react-redux"
+import React, {useState} from 'react'
+import { useDispatch } from "react-redux"
 import {SetUser} from "../../redux/user/actions"
 import {userLogin, getUser} from "../../redux/user/services"
-import {useNavigate} from "react-router-dom";
+import {NavLink, useNavigate} from "react-router-dom";
+import "./login.scss"
+import "../../images/sheet.jpg"
 
 
 export const Login = () => {
-
-    const user = useSelector((state) => state.user.profile);
     const navigate = useNavigate();
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
     
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    
+    const [errorFlag, setErrorFlag] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
+    const [errorEmail, setErrorEmail] = useState('');
+    const [errorPassword, setErrorPassword] = useState('');
+    
+    const onEmailChange = (value) => {
+        if(value.target.value === " "){
+            value.target.value = "";
+        }
+
+        setEmail(value.target.value);
+    }
+    const onPasswordChange = (value) => {
+        if(value.target.value === " "){
+            value.target.value = "";
+        }
+
+        setPassword(value.target.value);
+    }
+    const handleSubmit = async (e) =>{
+        e.preventDefault();
+        
+        if (!CheckInputs()){
+            return;
+        }
+        
+        await onSignIn();
+    }
+    function CheckInputs(){
+        let pattern  = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+        if(email === "" || password === ""){
+            setErrorMessage('Fields must not be empty!');
+            setErrorEmail('error');
+            setErrorPassword('error');
+            setErrorFlag('error');
+
+            return false;
+        }
+
+        if(!pattern .test(email)){
+            setErrorMessage('Email entered incorrectly!');
+            setErrorEmail('error');
+            setErrorPassword('');
+            setErrorFlag('error');
+
+            return false;
+        }
+
+        if(password.length < 6){
+            setErrorMessage('Password must be at least 6 characters!');
+            setErrorEmail('');
+            setErrorPassword('error');
+            setErrorFlag('error');
+
+            return false;
+        }
+
+        return true;
+    }
     const onSignIn = async () =>{
+
         let user = {
-            email: "testemail@mail.ru",
-            password: "qweasdzxc"
+            email: email,
+            password: password
         };
         try {
             await userLogin(user);
-            let test = await getUser();
-            console.log(test);
-            dispatch(SetUser(test));
+            dispatch(SetUser(await getUser()));
             navigate("/");
         }
         catch (e) {
-            console.log(e)
+            setErrorMessage(e.request.response);
+            setErrorEmail('error');
+            setErrorPassword('error');
+            setErrorFlag('error');
         }
     }
     
   return(
-      <>
-        <h2>Login</h2>
-          <p onClick={() => onSignIn()}>Click me</p>
-          <p>{user.id}</p>
-          <p>{user.nickname}</p>
-          <p>{user.email}</p>
-      </>
+      <div className="login">
+          <div className="img-place">
+          </div>
+          <form onSubmit={e => handleSubmit(e)}>
+              <h2>Welcome</h2>
+              <div className="data-field">
+                  <input className={errorEmail} type="text" placeholder="Email address *" value={email} onChange={value => onEmailChange(value)}/>
+              </div>
+              <div className="data-field">
+                  <input className={errorPassword} type="password" placeholder="Password *" value={password} onChange={value => onPasswordChange(value)}/>
+              </div>
+              <p className={"error-msg " + errorFlag}>{errorMessage}</p>
+              <button type="submit">Sign in</button>
+              <div className="login-links">
+                  <div className="login-link">
+                      <NavLink to="/recovery">Forgot password?</NavLink>
+                  </div>
+                  <div className="login-link">
+                      <NavLink to="/registration">Don't have account?</NavLink>
+                  </div>
+              </div>
+          </form>
+      </div>
   );
 }

@@ -1,0 +1,101 @@
+$primary-color: #1976D2;
+$second-color: white;
+$error-color: red;
+
+.login {
+  display: flex;
+  
+  .img-place{
+    width: 60%;
+    height: 100vh;
+    background-size: cover;
+    background-image: url("../../images/sheet.jpg");
+
+  }
+
+  form{
+    background-color: $second-color;
+    text-align: center;
+    width: 40%;
+    padding: 60px 100px;
+
+    h2{
+      font-size: 50px;
+      margin-bottom: 40px;
+      font-style: inherit;
+      text-shadow: 0 4px 4px rgba(0, 0, 0, 0.45);
+      color: $primary-color;
+    }
+
+    .data-field{
+      margin-bottom: 20px;
+      color: $primary-color;
+
+      input{
+        border-radius: 5px;
+        border: 1px solid $primary-color;
+        font-size: 20px;
+        padding: 7px 10px;
+        box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+        width: 100%;
+        
+        &.error{
+          border-color: $error-color;
+
+          &::placeholder {
+            color: $error-color;
+          }
+        }
+        
+        &:focus{
+          padding: 10px 13px;
+        }
+        
+        &::placeholder {
+          font-weight: bold;
+          opacity: 0.4;
+          color: $primary-color;
+        }
+        
+      }
+
+    }
+    
+    .error-msg{
+      color: $error-color;
+      
+    }
+
+    button{
+      width: 100%;
+      padding: 10px;
+      margin: 20px 0;
+      font-size: 20px;
+      color: $second-color;
+      background-color: $primary-color;
+      border-radius: 8px;
+      border: 1px solid $primary-color;
+      box-shadow: 2px 5px 4px rgba(0, 0, 0, 0.35);
+
+      &:hover{
+        background-color: $second-color;
+        color: $primary-color;
+      }
+    }
+
+    .login-links{
+      display: flex;
+      justify-content: space-between;
+      
+      a{
+        color: $primary-color;
+        font-size: 15px;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.45);
+
+        &:hover{
+          border-bottom: 1px solid $primary-color;
+        }
+      }
+    }
+  }
+}
