@@ -5,6 +5,8 @@ import {userLogin, getUser} from "../../redux/user/services"
 import {NavLink, useNavigate} from "react-router-dom";
 import "../../images/sheet.jpg"
 import error from "../../images/error.png";
+import openEye from "../../images/open_eye.png";
+import closeEye from "../../images/close_eye.png";
 
 
 export const Login = () => {
@@ -13,6 +15,9 @@ export const Login = () => {
     
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    
+    const [isVisiblePassword, setIsVisiblePassword] = useState(false);
+    const [inputType, setInputType] = useState("password");
     
     const [errorFlag, setErrorFlag] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
@@ -96,6 +101,17 @@ export const Login = () => {
         }
     }
     
+    const HideShowPassword = () => {
+        if (isVisiblePassword){
+            setInputType('password');
+        }
+        else{
+            setInputType('text');
+        }
+        
+        setIsVisiblePassword(!isVisiblePassword);
+    }
+    
   return(
       <div className="login">
           <div className="img-place">
@@ -106,7 +122,8 @@ export const Login = () => {
                   <input className={errorEmail} type="text" placeholder="Email address *" value={email} onChange={event => onEmailChange(event)}/>
               </div>
               <div className="data-field">
-                  <input className={errorPassword} type="password" placeholder="Password *" value={password} onChange={event => onPasswordChange(event)}/>
+                  <input className={errorPassword} type={inputType} placeholder="Password *" value={password} onChange={event => onPasswordChange(event)}/>
+                  <img src={isVisiblePassword ? closeEye : openEye} alt="open eye" title={isVisiblePassword ? "Hide password" : 'Show password'} onClick={ () => HideShowPassword()}/>
               </div>
               <div className={"msg " + errorFlag}>
                   <img src={error} alt="status"/>
