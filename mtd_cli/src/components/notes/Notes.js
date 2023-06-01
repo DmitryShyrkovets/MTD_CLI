@@ -25,8 +25,8 @@ export const Notes = () => {
      const Load = async () => {
 
         try {
-            let test =  await getNotes();
-            dispatch(SetNotes(test));
+            let notesList =  await getNotes();
+            dispatch(SetNotes(notesList));
         }
         catch (e) {
             console.log(e);
@@ -51,8 +51,10 @@ export const Notes = () => {
                     <p>Note id: {note.id}</p>
                     <p>Note userId: {note.userId}</p>
                     <p>Note name: {note.name}</p>
-                    <p>Note category: {note.category}</p>
-                    <p>Note text: {note.text}</p>
+                    <p>Note done: {note.isDone.toString()}</p>
+                    <p>Note description: {note.description}</p>
+                    <p>Note create date: {note.createAt}</p>
+                    <p>Note done date: {note.doneAt}</p>
                 </div>
             ))}
         </>

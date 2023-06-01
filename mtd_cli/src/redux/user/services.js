@@ -8,6 +8,6 @@ export const userLogout = async() => {
 }
 
 export const getUser = async() => {
-    const { data } = await api.get("/User/GetUser");
+    const { data } = await api.get("/Profile");
     return data;
 }

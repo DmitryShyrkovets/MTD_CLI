@@ -1,5 +1,5 @@
 import {api} from "../../helpers/api"
 export const getNotes = async() => {
-    const { data } = await api.get("/Note/GetNotes", { withCredentials: true });
+    const { data } = await api.get("/Notes", { withCredentials: true });
     return data;
 }

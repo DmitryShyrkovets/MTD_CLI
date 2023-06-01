@@ -5,9 +5,11 @@ const initialState = {
         {
             id: null,
             userId: null,
-            category: null,
             name: null,
-            text: null
+            description: null,
+            isDone: null,
+            createAt: null,
+            doneAt: null
         },
     ],
 };

@@ -3,9 +3,7 @@ import * as constants from './constants';
 const initialState = {
     profile: {
         id: null,
-        nickname: null,
         email: null,
-        password : null,
     }
 };
 
