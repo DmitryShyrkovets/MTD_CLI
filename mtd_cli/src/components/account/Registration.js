@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux"
 import {NavLink, useNavigate} from "react-router-dom";
 import {CreateUser, getUser} from "../../redux/user/services";
 import {SetUser} from "../../redux/user/actions";
+import error from "../../images/error.png";
 
 export const Registration = () =>{
 
@@ -52,7 +53,7 @@ export const Registration = () =>{
         await Registration();
     }
 
-    function CheckInputs(){
+    const CheckInputs = () => {
         let pattern  = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
         setErrorEmail('');
@@ -114,33 +115,35 @@ export const Registration = () =>{
             setErrorMessage(e.request.response);
             setErrorEmail('error');
             setErrorPassword('error');
+            setErrorConfirmPassword('error');
             setErrorFlag('error');
         }
     }
     
     return(
-      <div>
-          <div className="registration">
-              <div className="img-place">
-              </div>
-              <form onSubmit={e => handleSubmit(e)}>
-                  <h2>Registration</h2>
-                  <div className="data-field">
-                      <input className={errorEmail} type="text" placeholder="Email address *" value={email} onChange={event => onEmailChange(event)}/>
-                  </div>
-                  <div className="data-field">
-                      <input className={errorPassword} type="password" placeholder="Password *" value={password} onChange={event => onPasswordChange(event)}/>
-                  </div>
-                  <div className="data-field">
-                      <input className={errorConfirmPassword} type="password" placeholder="Confirm password *" value={confirmPassword} onChange={event => onConfirmPasswordChange(event)}/>
-                  </div>
-                  <p className={"error-msg " + errorFlag}>{errorMessage}</p>
-                  <div className="buttons">
-                      <button type="submit">Create account</button>
-                      <NavLink className="back" to="/login">Back</NavLink>
-                  </div>
-              </form>
-          </div>
-      </div>  
+        <div className="registration">
+            <div className="img-place">
+            </div>
+            <form onSubmit={e => handleSubmit(e)}>
+                <h2>Registration</h2>
+                <div className="data-field">
+                    <input className={errorEmail} type="text" placeholder="Email address *" value={email} onChange={event => onEmailChange(event)}/>
+                </div>
+                <div className="data-field">
+                    <input className={errorPassword} type="password" placeholder="Password *" value={password} onChange={event => onPasswordChange(event)}/>
+                </div>
+                <div className="data-field">
+                    <input className={errorConfirmPassword} type="password" placeholder="Confirm password *" value={confirmPassword} onChange={event => onConfirmPasswordChange(event)}/>
+                </div>
+                <div className={"msg " + errorFlag}>
+                    <img src={error} alt="status"/>
+                    <p>{errorMessage}</p>
+                </div>
+                <div className="buttons">
+                    <button type="submit">Create account</button>
+                    <NavLink className="back" to="/login">Back</NavLink>
+                </div>
+            </form>
+        </div>
     );
 }

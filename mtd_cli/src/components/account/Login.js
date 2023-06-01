@@ -3,8 +3,8 @@ import { useDispatch } from "react-redux"
 import {SetUser} from "../../redux/user/actions"
 import {userLogin, getUser} from "../../redux/user/services"
 import {NavLink, useNavigate} from "react-router-dom";
-import "./scss/account.scss"
 import "../../images/sheet.jpg"
+import error from "../../images/error.png";
 
 
 export const Login = () => {
@@ -42,9 +42,14 @@ export const Login = () => {
         
         await onSignIn();
     }
-    function CheckInputs(){
+    const CheckInputs = () => {
         let pattern  = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
+        setErrorEmail('');
+        setErrorPassword('');
+        setErrorMessage('')
+        setErrorFlag('');
+        
         if(email === "" || password === ""){
             setErrorMessage('Fields must not be empty!');
             setErrorEmail('error');
@@ -57,7 +62,6 @@ export const Login = () => {
         if(!pattern .test(email)){
             setErrorMessage('Email entered incorrectly!');
             setErrorEmail('error');
-            setErrorPassword('');
             setErrorFlag('error');
 
             return false;
@@ -65,7 +69,6 @@ export const Login = () => {
 
         if(password.length < 6){
             setErrorMessage('Password must be at least 6 characters!');
-            setErrorEmail('');
             setErrorPassword('error');
             setErrorFlag('error');
 
@@ -105,7 +108,10 @@ export const Login = () => {
               <div className="data-field">
                   <input className={errorPassword} type="password" placeholder="Password *" value={password} onChange={event => onPasswordChange(event)}/>
               </div>
-              <p className={"error-msg " + errorFlag}>{errorMessage}</p>
+              <div className={"msg " + errorFlag}>
+                  <img src={error} alt="status"/>
+                  <p>{errorMessage}</p>
+              </div>
               <button type="submit">Sign in</button>
               <div className="login-links">
                   <div className="login-link">
