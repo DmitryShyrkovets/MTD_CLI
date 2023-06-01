@@ -1,17 +1,17 @@
-@import "login-media";
+@import "account-media";
 
 $primary-color: #1976D2;
 $second-color: white;
 $error-color: red;
 
-.login {
+.login, .registration {
   display: flex;
   
   .img-place{
     width: 60%;
     height: 100vh;
     background-size: cover;
-    background-image: url("../../images/sheet.jpg");
+    background-image: url("../../../images/sheet.jpg");
 
   }
 
@@ -22,7 +22,7 @@ $error-color: red;
     padding: 60px 100px;
 
     h2{
-      font-size: 50px;
+      font-size: 35px;
       margin-bottom: 40px;
       font-style: inherit;
       text-shadow: 0 4px 4px rgba(0, 0, 0, 0.45);
@@ -97,6 +97,36 @@ $error-color: red;
         &:hover{
           border-bottom: 1px solid $primary-color;
         }
+      }
+    }
+  }
+}
+
+.registration{
+  a.back{
+    border: 1px solid $primary-color;
+  }
+  
+  .buttons{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    button{
+      width: auto;
+      margin-top: 20px;
+    }
+    
+    a{
+      padding: 10px 15px;
+      box-shadow: 2px 5px 4px rgba(0, 0, 0, 0.35);
+      border-radius: 8px;
+      font-size: 20px;
+      color: $primary-color;
+
+      &:hover{
+        background-color: $primary-color;
+        color: $second-color;
       }
     }
   }

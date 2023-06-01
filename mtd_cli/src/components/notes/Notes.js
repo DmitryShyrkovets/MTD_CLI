@@ -51,7 +51,7 @@ export const Notes = () => {
                     <p>Note id: {note.id}</p>
                     <p>Note userId: {note.userId}</p>
                     <p>Note name: {note.name}</p>
-                    <p>Note done: {note.isDone.toString()}</p>
+                    <p>Note done: {note.isDone?.toString()}</p>
                     <p>Note description: {note.description}</p>
                     <p>Note create date: {note.createAt}</p>
                     <p>Note done date: {note.doneAt}</p>
