@@ -1,10 +1,14 @@
 import {api} from "../../helpers/api"
-export const userLogin = async(loginData) => {
-    await api.post("/Account/Login", loginData);
+export const userLogin = async(data) => {
+    await api.post("/Account/Login", data);
 }
 
-export const CreateUser = async(loginData) => {
-    await api.post("/Account/Registration", loginData);
+export const CreateUser = async(data) => {
+    await api.post("/Account/Registration", data);
+}
+
+export const RecoveryData = async(data) => {
+    await api.post("/Account/RecoveryData", data);
 }
 
 export const userLogout = async() => {
