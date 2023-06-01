@@ -4,6 +4,8 @@ import {NavLink, useNavigate} from "react-router-dom";
 import {CreateUser, getUser} from "../../redux/user/services";
 import {SetUser} from "../../redux/user/actions";
 import error from "../../images/error.png";
+import closeEye from "../../images/close_eye.png";
+import openEye from "../../images/open_eye.png";
 
 export const Registration = () =>{
 
@@ -13,6 +15,11 @@ export const Registration = () =>{
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
+
+    const [isVisiblePassword, setIsVisiblePassword] = useState(false);
+    const [isVisibleConfirmPassword, setIsVisibleConfirmPassword] = useState(false);
+    const [inputTypePassword, setInputTypePassword] = useState("password");
+    const [inputTypeConfirmPassword, setInputTypeConfirmPassword] = useState("password");
 
     const [errorFlag, setErrorFlag] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
@@ -119,6 +126,28 @@ export const Registration = () =>{
             setErrorFlag('error');
         }
     }
+
+    const HideShowPassword = () => {
+        if (isVisiblePassword){
+            setInputTypePassword('password');
+        }
+        else{
+            setInputTypePassword('text');
+        }
+
+        setIsVisiblePassword(!isVisiblePassword);
+    }
+
+    const HideShowConfirmPassword = () => {
+        if (isVisibleConfirmPassword){
+            setInputTypeConfirmPassword('password');
+        }
+        else{
+            setInputTypeConfirmPassword('text');
+        }
+
+        setIsVisibleConfirmPassword(!isVisibleConfirmPassword);
+    }
     
     return(
         <div className="registration">
@@ -130,10 +159,12 @@ export const Registration = () =>{
                     <input className={errorEmail} type="text" placeholder="Email address *" value={email} onChange={event => onEmailChange(event)}/>
                 </div>
                 <div className="data-field">
-                    <input className={errorPassword} type="password" placeholder="Password *" value={password} onChange={event => onPasswordChange(event)}/>
+                    <input className={errorPassword} type={inputTypePassword} placeholder="Password *" value={password} onChange={event => onPasswordChange(event)}/>
+                    <img src={isVisiblePassword ? closeEye : openEye} alt="open eye" title={isVisiblePassword ? "Hide password" : 'Show password'} onClick={ () => HideShowPassword()}/>
                 </div>
                 <div className="data-field">
-                    <input className={errorConfirmPassword} type="password" placeholder="Confirm password *" value={confirmPassword} onChange={event => onConfirmPasswordChange(event)}/>
+                    <input className={errorPassword} type={inputTypeConfirmPassword} placeholder="Password *" value={confirmPassword} onChange={event => onConfirmPasswordChange(event)}/>
+                    <img src={isVisibleConfirmPassword ? closeEye : openEye} alt="open eye" title={isVisibleConfirmPassword ? "Hide password" : 'Show password'} onClick={ () => HideShowConfirmPassword()}/>
                 </div>
                 <div className={"msg " + errorFlag}>
                     <img src={error} alt="status"/>
