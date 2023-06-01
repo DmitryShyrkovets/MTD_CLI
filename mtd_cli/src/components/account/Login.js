@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux"
 import {SetUser} from "../../redux/user/actions"
 import {userLogin, getUser} from "../../redux/user/services"
 import {NavLink, useNavigate} from "react-router-dom";
-import "./login.scss"
+import "./scss/account.scss"
 import "../../images/sheet.jpg"
 
 
@@ -19,19 +19,19 @@ export const Login = () => {
     const [errorEmail, setErrorEmail] = useState('');
     const [errorPassword, setErrorPassword] = useState('');
     
-    const onEmailChange = (value) => {
-        if(value.target.value === " "){
-            value.target.value = "";
+    const onEmailChange = (event) => {
+        if(event.target.value === " "){
+            event.target.value = "";
         }
 
-        setEmail(value.target.value);
+        setEmail(event.target.value);
     }
-    const onPasswordChange = (value) => {
-        if(value.target.value === " "){
-            value.target.value = "";
+    const onPasswordChange = (event) => {
+        if(event.target.value === " "){
+            event.target.value = "";
         }
 
-        setPassword(value.target.value);
+        setPassword(event.target.value);
     }
     const handleSubmit = async (e) =>{
         e.preventDefault();
@@ -100,10 +100,10 @@ export const Login = () => {
           <form onSubmit={e => handleSubmit(e)}>
               <h2>Welcome</h2>
               <div className="data-field">
-                  <input className={errorEmail} type="text" placeholder="Email address *" value={email} onChange={value => onEmailChange(value)}/>
+                  <input className={errorEmail} type="text" placeholder="Email address *" value={email} onChange={event => onEmailChange(event)}/>
               </div>
               <div className="data-field">
-                  <input className={errorPassword} type="password" placeholder="Password *" value={password} onChange={value => onPasswordChange(value)}/>
+                  <input className={errorPassword} type="password" placeholder="Password *" value={password} onChange={event => onPasswordChange(event)}/>
               </div>
               <p className={"error-msg " + errorFlag}>{errorMessage}</p>
               <button type="submit">Sign in</button>
