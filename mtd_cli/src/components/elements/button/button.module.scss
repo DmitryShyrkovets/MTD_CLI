@@ -1,0 +1,56 @@
+@import "../../../scss/variabels.scss";
+
+button {
+  padding: 10px;
+  margin: 15px 0;
+  
+  width: 100%;
+  
+  border: 1px solid $primary-color;
+  border-radius: 5px;
+
+  font-weight: bold;
+
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25) !important;
+}
+
+.primary {
+  background-color: $primary-color;
+  
+  color: $second-color;
+
+  transition-duration: 0.4s;
+  
+  &:hover{
+    background-color: $second-color;
+
+    color: $primary-color;
+
+    transition-duration: 0.4s;
+  }
+}
+
+.second {
+  background-color: $second-color;
+
+  color: $primary-color;
+
+  transition-duration: 0.4s;
+
+  &:hover{
+    background-color: $primary-color;
+
+    color: $second-color;
+
+    transition-duration: 0.4s;
+  }
+}
+
+.completed {
+  background-color: $success-color;
+
+  color: $second-color;
+
+  transition-duration: 0.4s;
+  
+}

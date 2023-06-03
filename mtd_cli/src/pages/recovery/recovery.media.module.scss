@@ -1,0 +1,26 @@
+@media (max-width: 1300px){
+  .recovery {
+    form {
+      padding: 50px 30px 10px 30px !important;
+      overflow: auto !important;
+    }
+  }
+
+}
+
+
+@media (max-width: 767px) {
+  .recovery {
+    background: none !important;
+    height: 100vh;
+    align-items: center;
+    justify-content: center !important;
+
+    form {
+      overflow: auto !important;
+      width: 100% !important;
+      padding: 10px 20px !important;
+    }
+
+  }
+}

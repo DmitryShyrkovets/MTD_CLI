@@ -1,0 +1,36 @@
+@import "../../scss/variabels";
+@import "./login.media.module";
+
+.login{
+  display: flex;
+  justify-content: right;
+  
+  height: 100vh;
+  
+  background-image: url("../../assets/sheet.jpg");
+  background-size: cover;
+  
+  form{
+    text-align: center;
+    
+    background-color: $second-color;
+    
+    padding: 50px 30px 10px 30px;
+
+    h2{
+      color: $primary-color;
+      font-weight: bold;
+      font-size: 30px;
+
+      text-shadow: 0 4px 4px rgba(0, 0, 0, 0.45);
+      
+      margin-bottom: 30px;
+    }
+
+    .links{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+}
