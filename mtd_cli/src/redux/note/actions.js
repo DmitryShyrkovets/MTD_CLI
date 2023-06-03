@@ -9,3 +9,8 @@ export const CleanNotes = (payload) => ({
     type: ActionTypes.CLEAN_NOTES,
     payload,
 });
+
+export const SetFlag = (payload) => ({
+    type: ActionTypes.SET_FLAG,
+    payload,
+});

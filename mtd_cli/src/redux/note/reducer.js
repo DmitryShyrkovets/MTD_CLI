@@ -12,6 +12,7 @@ const initialState = {
             doneAt: null
         },
     ],
+    flag: false
 };
 
 export const noteReducer = (state = initialState, action) => {
@@ -25,6 +26,11 @@ export const noteReducer = (state = initialState, action) => {
             return {
                 ...state,
                 notes: [],
+            };
+        case constants.SET_FLAG:
+            return {
+                ...state,
+                flag: !state.flag
             };
         default:
             return state;
