@@ -10,7 +10,6 @@ export const Note = ({note}) => {
     const dispatch = useDispatch();
 
     const Done = async () => {
-        console.log(1);
         let data = {
             id: note.id,
             userId: note.userId,
