@@ -12,6 +12,7 @@ button {
   font-weight: bold;
 
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25) !important;
+  
 }
 
 .primary {
@@ -46,11 +47,40 @@ button {
   }
 }
 
-.completed {
+.complete {
   background-color: $success-color;
 
   color: $second-color;
 
   transition-duration: 0.4s;
+
+  border-color: $success-color;
+
+  &:hover{
+    background-color: $second-color;
+
+    color: $success-color;
+
+    transition-duration: 0.4s;
+  }
   
+}
+
+.delete {
+  background-color: $error-color;
+
+  color: $second-color;
+
+  transition-duration: 0.4s;
+  
+  border-color: $error-color;
+
+  &:hover{
+    background-color: $second-color;
+
+    color: $error-color;
+
+    transition-duration: 0.4s;
+  }
+
 }

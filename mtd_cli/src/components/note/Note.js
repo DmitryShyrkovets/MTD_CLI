@@ -15,7 +15,7 @@ export const Note = ({note}) => {
             userId: note.userId,
             name: note.name,
             description: note.description,
-            isDone: true,
+            isDone: !note.isDone,
         }
         try {
             await updateNote(data);
@@ -47,8 +47,8 @@ export const Note = ({note}) => {
                                        <del>{note.name}</del> 
                                        : note.name} />
             <div className={styles.actions}>
-                <Components.Button text={"Done"} isDisabled={note.isDone} rank={note.isDone && "completed"} type={"button"} action={() => Done()}/>
-                <Components.Button text={"Delete"} rank={"second"} type={"button"} action={() => Delete()}/>
+                <Components.Button text={"Done"} rank={note.isDone && "complete"} type={"button"} action={() => Done()}/>
+                <Components.Button text={"Delete"} rank={"delete"} type={"button"} action={() => Delete()}/>
             </div>
         </div>
     );

@@ -16,8 +16,11 @@ export const Button = ({
             case "second":
                 setButtonStyle(style.second);
                 return;
-            case "completed":
-                setButtonStyle(style.completed);
+            case "complete":
+                setButtonStyle(style.complete);
+                return;
+            case "delete":
+                setButtonStyle(style.delete);
                 return;
             default:
                 setButtonStyle(style.primary);
