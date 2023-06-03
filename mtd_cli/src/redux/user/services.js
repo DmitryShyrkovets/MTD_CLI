@@ -12,7 +12,7 @@ export const RecoveryData = async(data) => {
 }
 
 export const userLogout = async() => {
-    await api.get("/Account/Logout");
+    await api.post("/Account/Logout");
 }
 
 export const getUser = async() => {

@@ -1,0 +1,18 @@
+@import "../../../scss/variabels.scss";
+
+a.link {
+  color: $primary-color;
+  font-size: 15px;
+  
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.45);
+
+  transition-duration: 0.5s;
+
+  &:hover{
+    border-bottom: 1px solid $primary-color;
+    
+    font-size: 17px;
+
+    transition-duration: 0.5s;
+  }
+}
