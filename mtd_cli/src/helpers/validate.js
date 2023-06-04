@@ -105,3 +105,31 @@ export const ValidateRecoveryForm = (email, status) => {
 
     return {...status};
 }
+
+export const ValidateCreateNoteForm = (name, description, status) => {
+    status.message = '';
+    status.flag = '';
+    status.nameError = false;
+    status.descriptionError = false;
+
+    if(name === "" ){
+
+        status.message = 'Name must not be empty!';
+        status.flag = 'error';
+        status.nameError = true;
+
+        return {...status};
+    }
+
+    if(description === "" ){
+
+        status.message = 'Description must not be empty!';
+        status.flag = 'error';
+        status.descriptionError = true;
+
+        return {...status};
+    }
+    
+
+    return {...status};
+}

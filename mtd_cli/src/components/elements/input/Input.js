@@ -4,7 +4,7 @@ import closeEye from "../../../assets/close_eye.png"
 import style from "./input.module.scss"
 
 
-export const Input = ({placeholder, value, onChange, type, isError}) => {
+export const Input = ({placeholder, value, onChange, type, isError, maxLenght = 25}) => {
 
     const [isVisible, setIsVisible] = useState(false);
     const [inputType, setInputType] = useState(type);
@@ -27,6 +27,7 @@ export const Input = ({placeholder, value, onChange, type, isError}) => {
                        placeholder={placeholder}
                        className={isError  ? style.error : undefined}
                        value={value}
+                       maxLength={maxLenght}
                        onChange={e => onChange(e)}/>
                 <img src={isVisible ? closeEye : openEye}
                      alt="open eye"
@@ -39,6 +40,7 @@ export const Input = ({placeholder, value, onChange, type, isError}) => {
                        placeholder={placeholder}
                        className={isError  ? style.error : undefined}
                        value={value}
+                       maxLength={maxLenght}
                        onChange={e => onChange(e)}/>
             </article> }
         </>

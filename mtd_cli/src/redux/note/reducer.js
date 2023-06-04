@@ -12,7 +12,8 @@ const initialState = {
             doneAt: null
         },
     ],
-    flag: false
+    flag: false,
+    showCreateForm: false
 };
 
 export const noteReducer = (state = initialState, action) => {
@@ -21,6 +22,12 @@ export const noteReducer = (state = initialState, action) => {
             return {
                 ...state,
                 notes: action.payload,
+            };
+        case constants.CREATE_NOTE:
+            return {
+                ...state,
+                flag: !state.flag,
+                showCreateForm: false
             };
         case constants.CLEAN_NOTES:
             return {
@@ -31,6 +38,16 @@ export const noteReducer = (state = initialState, action) => {
             return {
                 ...state,
                 flag: !state.flag
+            };
+        case constants.SHOW_CREATE_FORM:
+            return {
+                ...state,
+                showCreateForm: true
+            };
+        case constants.HIDE_CREATE_FORM:
+            return {
+                ...state,
+                showCreateForm: false
             };
         default:
             return state;
