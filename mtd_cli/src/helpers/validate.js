@@ -106,7 +106,7 @@ export const ValidateRecoveryForm = (email, status) => {
     return {...status};
 }
 
-export const ValidateCreateNoteForm = (name, description, status) => {
+export const ValidateNoteForm = (name, description, status) => {
     status.message = '';
     status.flag = '';
     status.nameError = false;

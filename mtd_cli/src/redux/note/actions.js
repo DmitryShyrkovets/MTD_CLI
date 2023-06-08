@@ -10,8 +10,18 @@ export const CreateNote = (payload) => ({
     payload,
 });
 
+export const UpdateNote = (payload) => ({
+    type: ActionTypes.UPDATE_NOTE,
+    payload,
+});
+
 export const CleanNotes = (payload) => ({
     type: ActionTypes.CLEAN_NOTES,
+    payload,
+});
+
+export const SetDetail = (payload) => ({
+    type: ActionTypes.SET_DETAIL,
     payload,
 });
 
@@ -27,5 +37,15 @@ export const ShowCreateForm = (payload) => ({
 
 export const HideCreateForm = (payload) => ({
     type: ActionTypes.HIDE_CREATE_FORM,
+    payload,
+});
+
+export const ShowUpdateForm = (payload) => ({
+    type: ActionTypes.SHOW_UPDATE_FORM,
+    payload,
+});
+
+export const HideUpdateForm = (payload) => ({
+    type: ActionTypes.HIDE_UPDATE_FORM,
     payload,
 });

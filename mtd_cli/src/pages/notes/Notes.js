@@ -11,7 +11,7 @@ export const Notes = () => {
     const flag = useSelector((state) => state.note.flag);
     const showCreateForm = useSelector((state) => state.note.showCreateForm);
     const user = useSelector((state) => state.user.profile);
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
     const navigate = useNavigate();
 
     useEffect( () => {

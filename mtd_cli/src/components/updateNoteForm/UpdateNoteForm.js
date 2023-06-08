@@ -1,16 +1,16 @@
 import React, {useEffect, useState} from 'react'
-import styles from "./create.note.form.module.scss"
-import * as Components from "../../components/index"
-import {createNote} from "../../redux/note/services"
-import {HideCreateForm, CreateNote} from "../../redux/note/actions";
+import styles from "./update.note.form.module.scss"
+import * as Components from "../index"
+import {updateNote} from "../../redux/note/services"
+import {HideUpdateForm, UpdateNote} from "../../redux/note/actions";
 import {useDispatch} from "react-redux";
 import {ValidateNoteForm} from "../../helpers/validate";
 
-export const CreateNoteForm = ({userId}) => {
+export const UpdateNoteForm = ({note}) => {
     const dispatch = useDispatch()
     
-    const [name, setName] = useState('');
-    const [description, setDescription] = useState('');
+    const [name, setName] = useState(note.name);
+    const [description, setDescription] = useState(note.description);
     
     const [status, setStatus] = useState({
         type: '',
@@ -33,23 +33,25 @@ export const CreateNoteForm = ({userId}) => {
         setStatus(ValidateNoteForm(name, description, status));
 
         if (status.flag === '') {
-            await Create();
+            await Update();
         }
     }
     
     const Back = () => {
-        dispatch(HideCreateForm());
+        dispatch(HideUpdateForm());
     }
     
-    const Create = async() => {
-        let note = {
-            userId: userId,
+    const Update = async() => {
+        let updatedNote = {
+            id: note.id,
+            userId: note.userId,
             name: name,
-            description: description
+            description: description,
+            isDone: note.isDone
         }
         try {
-            await createNote(note);
-            dispatch(CreateNote());
+            await updateNote(updatedNote);
+            dispatch(UpdateNote());
         }
         catch (e) {
             setStatus({
@@ -62,15 +64,15 @@ export const CreateNoteForm = ({userId}) => {
     }
     
     return(
-        <div className={styles.create}>
+        <div className={styles.update}>
             <form onSubmit={ e => onHandleSubmit(e)}>
-                <h2>Create Note</h2>
+                <h2>Edit Note</h2>
                 <Components.Input placeholder="Name *" value={name} onChange={e => onChangeName(e)} isError={status.nameError}/>
                 <Components.TextArea placeholder="Description *" value={description} onChange={e => onChangeDescription(e)} isError={status.descriptionError}/>
                 <Components.Message type={status.type} text={status.message}/>
                 <div className={styles.actions}>
                     <div>
-                        <Components.Button text="Create"/>
+                        <Components.Button text="Save"/>
                     </div>
                     <div>
                         <Components.Button type="button" rank="second" text="Back" action={() => Back()}/>
