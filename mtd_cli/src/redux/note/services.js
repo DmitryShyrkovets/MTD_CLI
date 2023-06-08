@@ -4,6 +4,11 @@ export const getNotes = async() => {
     return data;
 }
 
+export const getDetail = async(id) => {
+    const { data } = await api.get('/Notes/' + id, { withCredentials: true });
+    return data;
+}
+
 export const createNote = async(data) => {
     await api.post("/Notes", data, { withCredentials: true });
 }

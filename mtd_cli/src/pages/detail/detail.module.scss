@@ -1,0 +1,53 @@
+@import "../../scss/variabels.scss";
+
+.detail {
+
+  display: flex;
+  justify-content: center;
+  margin: 70px 10px 10px 10px;
+
+  section.success{
+    border-color: $success-color;
+  }
+
+  section {
+
+    border: 2px solid $primary-color;
+    border-radius: 10px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+
+    width: 700px;
+
+    .dates{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 20px;
+      color: $primary-color;
+      opacity: 0.5;
+      border-bottom: 1px solid $primary-color;
+
+      p:first-child{
+        margin-right: 20px;
+      }
+    }
+
+    .description{
+      padding: 20px;
+      color: $primary-color;
+
+      h3{
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+    }
+
+    button{
+      margin: 0;
+      border-radius: 0 0 5px 5px;
+    }
+  }
+  
+}
+
+

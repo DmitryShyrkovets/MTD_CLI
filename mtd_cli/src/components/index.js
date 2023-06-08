@@ -6,7 +6,10 @@ export { Message } from './message/Message';
 export { RecoveryInstruction } from './recoveryInstruction/RecoveryInstruction';
 
 export { CreateNoteForm } from './createNoteForm/CreateNoteForm';
+export { UpdateNoteForm } from './updateNoteForm/UpdateNoteForm';
 export { Input } from './elements/input/Input';
 export { TextArea } from './elements/textarea/TextArea';
 export { Button } from './elements/button/Button';
 export { CustomLink } from './elements/link/Link';
+
+export {DetailHead} from './detailHead/DetailHead'

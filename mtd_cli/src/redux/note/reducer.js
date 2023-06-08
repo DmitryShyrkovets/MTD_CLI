@@ -1,4 +1,5 @@
 import * as constants from './constants';
+import moment from 'moment'
 
 const initialState = {
     notes: [
@@ -12,8 +13,18 @@ const initialState = {
             doneAt: null
         },
     ],
+    detail: {
+        id: null,
+        userId: null,
+        name: null,
+        description: null,
+        isDone: null,
+        createAt: null,
+        doneAt: null
+    },
     flag: false,
-    showCreateForm: false
+    showCreateForm: false,
+    showUpdateForm: false,
 };
 
 export const noteReducer = (state = initialState, action) => {
@@ -29,10 +40,21 @@ export const noteReducer = (state = initialState, action) => {
                 flag: !state.flag,
                 showCreateForm: false
             };
+        case constants.UPDATE_NOTE:
+            return {
+                ...state,
+                showUpdateForm: false,
+                flag: !state.flag,
+            };
         case constants.CLEAN_NOTES:
             return {
                 ...state,
                 notes: [],
+            };
+        case constants.SET_DETAIL:
+            return {
+                ...state,
+                detail: action.payload
             };
         case constants.SET_FLAG:
             return {
@@ -48,6 +70,16 @@ export const noteReducer = (state = initialState, action) => {
             return {
                 ...state,
                 showCreateForm: false
+            };
+        case constants.SHOW_UPDATE_FORM:
+            return {
+                ...state,
+                showUpdateForm: true
+            };
+        case constants.HIDE_UPDATE_FORM:
+            return {
+                ...state,
+                showUpdateForm: false
             };
         default:
             return state;
