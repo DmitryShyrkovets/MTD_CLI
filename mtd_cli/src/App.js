@@ -12,6 +12,7 @@ function App() {
                 <Route strict path="/recovery" element={<Pages.Recovery />}/>
                 <Route strict path="/notes" element={<Pages.Notes />}/>
                 <Route strict path="/notes/:id" element={<Pages.Detail />}/>
+                <Route strict path="/profile" element={<Pages.Profile />}/>
                 <Route strict path="/" element={<Pages.Notes />}/>
             </Routes>
         </Router>
